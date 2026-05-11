@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ししまるキッチンカー | 春を届けるやさしいごはん</title>
+    <meta
+      name="description"
+      content="ししまるキッチンカー公式LP。親子で楽しめるやさしいメニュー、出店情報、配管工事会社の信頼紹介、採用情報、お問い合わせはこちら。"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- =========================
+      ヘッダー（固定ナビ）
+      - セクションへの移動リンクを集約
+      - スマホではハンバーガーメニュー化
+    ========================== -->
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a href="#top" class="logo" aria-label="ししまるキッチンカー トップへ">
+          <span class="logo-icon">🦁🌸</span>
+          <span class="logo-text">ししまるキッチンカー</span>
+        </a>
+
+        <button class="menu-toggle" aria-expanded="false" aria-controls="global-nav">
+          <span></span><span></span><span></span>
+          <span class="sr-only">メニューを開く</span>
+        </button>
+
+        <nav id="global-nav" class="global-nav" aria-label="グローバルナビゲーション">
+          <ul>
+            <li><a href="#menu">メニュー</a></li>
+            <li><a href="#shishimaru">ししまる紹介</a></li>
+            <li><a href="#schedule">出店情報</a></li>
+            <li><a href="#company">会社紹介</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- =========================
+        1. ファーストビュー
+        - ブランドの第一印象を伝えるセクション
+        - 背景画像は images/hero.jpg を差し替えるだけで変更可能
+      ========================== -->
+      <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+          <p class="hero-kicker">春のわくわくを、まちへ。</p>
+          <h1>やさしい黄色の<br />ししまるキッチンカー</h1>
+          <p>
+            かわいいライオンマスコット「ししまる」が、
+            親子で笑顔になれるごはんと安心をお届けします。
+          </p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#schedule">今日の出店を見る</a>
+            <a class="btn btn-secondary" href="#contact">お問い合わせ</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+        2. メニュー紹介
+        - カードを追加するだけでメニュー拡張しやすい構造
+        - 画像は images/menu-*.jpg を差し替え可能
+      ========================== -->
+      <section id="menu" class="section">
+        <div class="container">
+          <h2>メニュー紹介</h2>
+          <p class="section-lead">お子さまにも食べやすい、ほっとする味をそろえました。</p>
+
+          <div class="menu-grid">
+            <article class="card">
+              <img src="images/menu-curry.jpg" alt="ししまる春色カレー" />
+              <h3>ししまる春色カレー</h3>
+              <p>やさしい甘さの野菜カレー。桜色トッピングで春らしく。</p>
+            </article>
+            <article class="card">
+              <img src="images/menu-hotdog.jpg" alt="さくらドッグ" />
+              <h3>さくらドッグ</h3>
+              <p>ふんわりパンとジューシーソーセージ。親子人気No.1。</p>
+            </article>
+            <article class="card">
+              <img src="images/menu-lemonade.jpg" alt="ししまるレモネード" />
+              <h3>ししまるレモネード</h3>
+              <p>ほんのり甘い、すっきりドリンク。イベントのおともに。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+        3. ししまる紹介
+        - キャラクター訴求で親子向けブランド認知を強化
+      ========================== -->
+      <section id="shishimaru" class="section section-soft">
+        <div class="container about-grid">
+          <div class="about-image">
+            <img src="images/shishimaru-main.jpg" alt="ししまるマスコットイメージ" />
+          </div>
+          <div class="about-text">
+            <h2>ししまる紹介</h2>
+            <p>
+              ししまるは、やさしい黄色の体にピンクの桜たてがみを持つ、
+              応援キャラクターのライオンです。
+            </p>
+            <ul>
+              <li>いつも笑顔で、はじめましての子にも安心感</li>
+              <li>イベント会場で「がんばれ！」を届ける応援隊長</li>
+              <li>地域のみんなをつなぐ、ししまるブランドのシンボル</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+        4. 出店情報
+        - JavaScriptで簡易フィルター（全て/平日/週末）
+        - 将来的にCMS化しやすいよう、1件ずつarticle化
+      ========================== -->
+      <section id="schedule" class="section">
+        <div class="container">
+          <h2>出店情報</h2>
+          <p class="section-lead">最新の出店スケジュールです。親子イベントにも参加中！</p>
+
+          <div class="chip-group" role="group" aria-label="曜日フィルター">
+            <button class="chip is-active" data-filter="all">すべて</button>
+            <button class="chip" data-filter="weekday">平日</button>
+            <button class="chip" data-filter="weekend">週末</button>
+          </div>
+
+          <div class="schedule-list" id="scheduleList">
+            <article class="schedule-item" data-day="weekday">
+              <h3>5/13（水）ししまる公園マルシェ</h3>
+              <p>11:00〜16:00 / ししまる中央公園（芝生エリア）</p>
+            </article>
+            <article class="schedule-item" data-day="weekday">
+              <h3>5/15（金）さくら保育園前ランチ</h3>
+              <p>10:30〜14:30 / さくら保育園前スペース</p>
+            </article>
+            <article class="schedule-item" data-day="weekend">
+              <h3>5/18（日）親子わくわくフェス</h3>
+              <p>10:00〜17:00 / 市民イベント広場</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+        5. 会社紹介（配管工事）
+        - キッチンカー母体企業への信頼導線
+        - 採用導線として求人ボタンを配置
+      ========================== -->
+      <section id="company" class="section section-soft">
+        <div class="container">
+          <h2>会社紹介（配管工事）</h2>
+          <p class="section-lead">地域インフラを支える配管工事会社が運営しています。</p>
+
+          <div class="company-box">
+            <h3>ししまる設備工業株式会社</h3>
+            <p>
+              創業以来、給排水・空調配管の施工とメンテナンスを通して、
+              安心して暮らせるまちづくりに取り組んできました。
+              キッチンカー事業でも「安全・衛生・信頼」を大切にしています。
+            </p>
+            <div class="company-links">
+              <a class="btn btn-primary" href="#contact">施工・出店の相談をする</a>
+              <a class="btn btn-secondary" href="#contact">採用について問い合わせる</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================
+        6. お問い合わせ
+        - 連絡導線の集約
+        - フォームは初心者でも編集しやすいシンプル構成
+      ========================== -->
+      <section id="contact" class="section">
+        <div class="container">
+          <h2>お問い合わせ</h2>
+          <p class="section-lead">出店依頼・会社相談・採用エントリーなどお気軽にどうぞ。</p>
+
+          <form class="contact-form" action="#" method="post">
+            <label>
+              お名前
+              <input type="text" name="name" placeholder="例）ししまる 太郎" required />
+            </label>
+            <label>
+              メールアドレス
+              <input type="email" name="email" placeholder="example@mail.com" required />
+            </label>
+            <label>
+              お問い合わせ種別
+              <select name="type" required>
+                <option value="">選択してください</option>
+                <option value="kitchencar">キッチンカー出店について</option>
+                <option value="plumbing">配管工事について</option>
+                <option value="recruit">採用について</option>
+              </select>
+            </label>
+            <label>
+              内容
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="お問い合わせ内容をご記入ください"
+                required
+              ></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary">送信する</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2026 ししまるキッチンカー / ししまる設備工業株式会社</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
