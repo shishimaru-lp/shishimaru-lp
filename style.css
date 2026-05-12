@@ -159,22 +159,44 @@ h2 {
 /* ヒーロー */
 .hero {
   position: relative;
-  min-height: 72vh;
+  min-height: calc(100svh - 64px);
   display: grid;
   align-items: center;
-  background: url("images/hero.jpg") center/cover no-repeat;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 0;
+  object-fit: cover;
+  object-position: 50% center;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(255, 217, 90, 0.82), rgba(255, 141, 176, 0.62));
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(28, 22, 18, 0.04) 0%, rgba(28, 22, 18, 0.16) 55%, rgba(255, 253, 247, 0.9) 100%),
+    linear-gradient(90deg, rgba(255, 253, 247, 0.86) 0%, rgba(255, 253, 247, 0.42) 42%, rgba(255, 253, 247, 0.08) 100%);
 }
 
 .hero-content {
   position: relative;
+  align-self: end;
   color: #3f3128;
-  padding-block: 3rem;
+  padding-block: clamp(2.4rem, 8vw, 5rem);
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.7);
+}
+
+.hero-content > p:not(.hero-kicker) {
+  max-width: 560px;
 }
 
 .hero-kicker {
@@ -341,6 +363,14 @@ textarea {
     height: 48px;
     max-height: 48px;
     max-width: 150px;
+  }
+
+  .hero {
+    min-height: calc(100svh - 72px);
+  }
+
+  .hero-image {
+    object-position: center center;
   }
 
   .menu-toggle {
