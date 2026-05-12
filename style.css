@@ -94,6 +94,16 @@ h2 {
   font-weight: 700;
 }
 
+.logo-image {
+  width: auto;
+  max-width: 56px;
+  max-height: 52px;
+  display: block;
+  border-radius: 0;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
 .menu-toggle {
   background: none;
   border: 0;
