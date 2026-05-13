@@ -4,10 +4,9 @@
 
 ## 推奨ファイル名（`index.html` で参照中）
 - `hero.jpg`（ファーストビュー背景）
-- `menu-curry.jpg`
-- `menu-hotdog.jpg`
-- `menu-lemonade.jpg`
-- `shishimaru-main.jpg`
+- `first-view.png`
+- `katusando.png`
+- `natadecoco2.png`
 
 ## 推奨サイズ
 - hero.jpg: 1920x1080 以上
