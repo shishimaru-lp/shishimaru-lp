@@ -159,11 +159,12 @@ h2 {
 /* ヒーロー */
 .hero {
   position: relative;
-  min-height: calc(100svh - 64px);
+  min-height: clamp(560px, calc(100svh - 64px), 760px);
   display: grid;
   align-items: center;
   overflow: hidden;
   isolation: isolate;
+  background: var(--base-bg);
 }
 
 .hero-image {
@@ -183,8 +184,8 @@ h2 {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(28, 22, 18, 0.04) 0%, rgba(28, 22, 18, 0.16) 55%, rgba(255, 253, 247, 0.9) 100%),
-    linear-gradient(90deg, rgba(255, 253, 247, 0.86) 0%, rgba(255, 253, 247, 0.42) 42%, rgba(255, 253, 247, 0.08) 100%);
+    linear-gradient(180deg, rgba(28, 22, 18, 0.03) 0%, rgba(28, 22, 18, 0.14) 48%, rgba(255, 253, 247, 0.94) 100%),
+    linear-gradient(90deg, rgba(255, 253, 247, 0.88) 0%, rgba(255, 253, 247, 0.48) 42%, rgba(255, 253, 247, 0.08) 100%);
 }
 
 .hero-content {
@@ -366,7 +367,7 @@ textarea {
   }
 
   .hero {
-    min-height: calc(100svh - 72px);
+    min-height: clamp(620px, calc(100svh - 72px), 820px);
   }
 
   .hero-image {
