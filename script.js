@@ -45,3 +45,40 @@ filterButtons.forEach((button) => {
     });
   });
 });
+
+// ------------------------------
+// 3) Menu card drag scroll
+// ------------------------------
+const menuGrid = document.querySelector('.menu-grid');
+
+if (menuGrid) {
+  let isDragging = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+
+  menuGrid.addEventListener('mousedown', (event) => {
+    if (event.button !== 0) return;
+
+    isDragging = true;
+    startX = event.pageX;
+    startScrollLeft = menuGrid.scrollLeft;
+    menuGrid.classList.add('is-dragging');
+  });
+
+  menuGrid.addEventListener('mousemove', (event) => {
+    if (!isDragging) return;
+
+    event.preventDefault();
+    const distance = event.pageX - startX;
+    menuGrid.scrollLeft = startScrollLeft - distance;
+  });
+
+  const stopDragging = () => {
+    isDragging = false;
+    menuGrid.classList.remove('is-dragging');
+  };
+
+  menuGrid.addEventListener('mouseup', stopDragging);
+  menuGrid.addEventListener('mouseleave', stopDragging);
+  window.addEventListener('mouseup', stopDragging);
+}

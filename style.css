@@ -251,6 +251,13 @@ h2 {
   scrollbar-color: rgba(91, 58, 41, 0.22) transparent;
   padding-bottom: 0.35rem;
   -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  user-select: none;
+}
+
+.menu-grid.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
 }
 
 .menu-grid::-webkit-scrollbar {
@@ -279,6 +286,7 @@ h2 {
   aspect-ratio: 3 / 2;
   object-fit: cover;
   object-position: center;
+  pointer-events: none;
 }
 
 /* ししまる紹介 */
