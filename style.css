@@ -242,8 +242,28 @@ h2 {
 
 /* メニュー */
 .menu-grid {
-  display: grid;
+  display: flex;
   gap: 1rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(91, 58, 41, 0.22) transparent;
+  padding-bottom: 0.35rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.menu-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.menu-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.menu-grid::-webkit-scrollbar-thumb {
+  background: rgba(91, 58, 41, 0.18);
+  border-radius: 999px;
 }
 
 .card {
@@ -251,6 +271,14 @@ h2 {
   padding: 0.8rem;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
+  flex: 0 0 min(82vw, 320px);
+  scroll-snap-align: start;
+}
+
+.card img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ししまる紹介 */
@@ -394,7 +422,11 @@ textarea {
   }
 
   .menu-grid {
-    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 0.45rem;
+  }
+
+  .card {
+    flex-basis: min(31vw, 340px);
   }
 
   .about-grid {

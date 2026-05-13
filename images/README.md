@@ -8,6 +8,7 @@
 - `katusando.png`
 - `natadecoco2.png`
 - `cyurodog.png`
+- `karaage.png`
 
 ## 推奨サイズ
 - hero.jpg: 1920x1080 以上
