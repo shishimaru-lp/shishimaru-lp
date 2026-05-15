@@ -53,6 +53,8 @@ const menuGrid = document.querySelector('.menu-grid');
 
 if (menuGrid) {
   let isDragging = false;
+  let hasDragged = false;
+  let suppressClick = false;
   let startX = 0;
   let startScrollLeft = 0;
 
@@ -60,6 +62,7 @@ if (menuGrid) {
     if (event.button !== 0) return;
 
     isDragging = true;
+    hasDragged = false;
     startX = event.pageX;
     startScrollLeft = menuGrid.scrollLeft;
     menuGrid.classList.add('is-dragging');
@@ -70,10 +73,20 @@ if (menuGrid) {
 
     event.preventDefault();
     const distance = event.pageX - startX;
+    if (Math.abs(distance) > 6) {
+      hasDragged = true;
+    }
     menuGrid.scrollLeft = startScrollLeft - distance;
   });
 
   const stopDragging = () => {
+    if (isDragging && hasDragged) {
+      suppressClick = true;
+      window.setTimeout(() => {
+        suppressClick = false;
+      }, 0);
+    }
+
     isDragging = false;
     menuGrid.classList.remove('is-dragging');
   };
@@ -81,4 +94,58 @@ if (menuGrid) {
   menuGrid.addEventListener('mouseup', stopDragging);
   menuGrid.addEventListener('mouseleave', stopDragging);
   window.addEventListener('mouseup', stopDragging);
+
+  menuGrid.addEventListener('click', (event) => {
+    const image = event.target.closest('.card img');
+    if (!image) return;
+
+    if (suppressClick) {
+      event.preventDefault();
+      return;
+    }
+
+    openImageModal(image);
+  });
 }
+
+// ------------------------------
+// 4) Menu image modal
+// ------------------------------
+const imageModal = document.querySelector('#imageModal');
+const imageModalImage = document.querySelector('.image-modal__image');
+const imageModalClose = document.querySelector('.image-modal__close');
+
+const openImageModal = (image) => {
+  if (!imageModal || !imageModalImage) return;
+
+  imageModalImage.src = image.currentSrc || image.src;
+  imageModalImage.alt = image.alt;
+  imageModal.classList.add('is-open');
+  imageModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+  imageModalClose?.focus();
+};
+
+const closeImageModal = () => {
+  if (!imageModal || !imageModalImage) return;
+
+  imageModal.classList.remove('is-open');
+  imageModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+  imageModalImage.src = '';
+  imageModalImage.alt = '';
+};
+
+imageModalClose?.addEventListener('click', closeImageModal);
+
+imageModal?.addEventListener('click', (event) => {
+  if (event.target === imageModal) {
+    closeImageModal();
+  }
+});
+
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && imageModal?.classList.contains('is-open')) {
+    closeImageModal();
+  }
+});
